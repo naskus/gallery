@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berawal dari Penasaran</title>
+    <title>About Me</title>
     <link rel="icon" href="https://linnopixel.github.io/2/icon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,13 +14,19 @@
             box-sizing: border-box;
         }
 
-        /* PALET WARNA BARU: Gelap, Hangat, dan Kontras */
         :root {
-            --bg-primary: #222831; /* Hitam Tua (Dominan) */
-            --bg-secondary: #393E46; /* Abu-abu Gelap Menengah (Latar Belakang Kartu/Sekunder) */
-            --accent: #948979; /* Coklat Kusam / Aksen Hangat */
-            --text-primary: #DFD0B8; /* Krem Terang (Teks Utama) */
-            --text-secondary: rgba(223, 208, 184, 0.7); /* Teks Sekunder dengan Opacity */
+            --bg-primary: #222831; 
+            --bg-secondary: #393E46; 
+            --accent: #948979; 
+            --text-primary: #DFD0B8; 
+            --text-secondary: rgba(223, 208, 184, 0.7); 
+            
+            --shape-pill: 9999px;
+            --shape-large: 28px;
+            --shape-medium: 16px;
+            --shape-small: 8px;
+            
+            --transition-standard: all 0.3s cubic-bezier(0.2, 0, 0, 1);
         }
 
         html {
@@ -31,34 +37,35 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 26px;
             overflow-x: hidden;
+            font-size: 16px;
         }
 
-        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            /* Menggunakan warna yang kontras sedikit lebih gelap dari primary */
-            background: rgba(34, 40, 49, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
+            background: rgba(34, 40, 49, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 16px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: var(--transition-standard);
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            gap: 8px;
+            font-size: 24px;
             font-weight: 600;
             color: var(--text-primary); 
             order: -1; 
+            letter-spacing: -0.5px;
         }
 
         .logo i {
@@ -67,40 +74,51 @@
 
         .nav-menu {
             display: flex;
-            gap: 2rem;
+            gap: 8px;
             list-style: none;
         }
 
         .nav-menu a {
             color: var(--text-primary);
             text-decoration: none;
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
-            transition: color 0.3s ease;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 19px;
+            border-radius: var(--shape-pill);
+            transition: var(--transition-standard);
         }
 
         .nav-menu a:hover {
-            color: var(--accent);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
         }
 
         .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
-            gap: 5px;
+            gap: 6px;
             order: 1; 
+            padding: 10px;
+            border-radius: var(--shape-pill);
+            transition: var(--transition-standard);
+        }
+        
+        .hamburger:hover {
+            background-color: var(--bg-secondary);
         }
 
         .hamburger span {
-            width: 25px;
-            height: 3px;
+            width: 24px;
+            height: 2px;
             background: var(--text-primary); 
-            transition: all 0.3s ease;
+            transition: var(--transition-standard);
+            border-radius: var(--shape-pill);
         }
 
-        /* Hero Section */
         .hero {
             position: relative;
-            min-height: 100vh;
+            min-height: 1030px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -108,15 +126,12 @@
             text-align: center;
             background-color: var(--bg-secondary);
             overflow: hidden;
-            padding: 2rem;
-            padding-top: 6rem;
-            
-            /* Background Statis */
-            background-image: url('bg.jpg');
+            padding: 32px;
+            padding-top: 120px;
+            background-image: url('bg.jpeg');
             background-position: center center;
             background-size: cover;
             background-repeat: no-repeat;
-            position: relative;
         }
         
         .hero::before {
@@ -126,8 +141,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Overlay Gelap, menggunakan warna primary baru */
-            background: rgba(34, 40, 49, 0.7); 
+            background: rgba(34, 40, 49, 0.75); 
             z-index: 1;
         }
 
@@ -135,266 +149,276 @@
             z-index: 2;
         }
 
+        .hero-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            margin-bottom: 24px;
+        }
+
+        .hero-profile img {
+            width: 200px;
+            height: 200px;
+            border-radius: var(--shape-pill);
+            object-fit: cover;
+            margin-bottom: 40px;
+            border: 4px solid var(--bg-primary);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+            transition: var(--transition-standard);
+        }
+        
+        .hero-profile img:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+        }
+
+        .hero-profile h2 {
+            font-size: 60px;
+            font-weight: 550;
+            margin-bottom: 40px;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-badge {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 10px 19px;
+            border-radius: var(--shape-pill);
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(223, 208, 184, 0.1);
+        }
+        
+        .hero-badge i {
+            color: var(--accent);
+        }
+
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
+            font-size: 55px;
+            font-weight: 550;
+            margin-bottom: 19px;
+            letter-spacing: -1px;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            font-weight: 300;
+            font-size: 21px;
+            font-weight: 400;
             max-width: 700px;
-            margin-bottom: 2rem;
+            margin-bottom: 40px;
+            color: var(--text-secondary);
         }
 
         .cta-button {
             background: var(--accent);
-            /* Warna teks tombol menggunakan warna yang kontras dengan accent, yaitu warna primary */
             color: var(--bg-primary); 
-            padding: 1rem 2.5rem;
+            padding: 19px 48px;
             border: none;
-            border-radius: 50px;
-            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            border-radius: var(--shape-pill); 
+            font-size: 18px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition-standard);
         }
 
         .cta-button:hover {
             background: var(--text-primary);
-            color: var(--bg-primary); /* Ubah warna teks hover menjadi warna primary */
-            transform: translateY(-3px);
-            /* Box shadow menggunakan warna accent baru */
-            box-shadow: 0 10px 20px rgba(148, 137, 121, 0.3); 
-        }
-
-        /* Story Section */
-        .story {
-            padding: 5rem 5%;
-            background: var(--bg-primary);
-            text-align: center;
-        }
-
-        .story-header {
-            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-            font-weight: 600;
-            margin-bottom: 3rem;
-        }
-
-        .story-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .story-image {
-            width: 250px; 
-            height: 250px;
-            /* Menggunakan warna secondary/accent baru untuk latar/border */
-            background: var(--bg-secondary); 
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            border: 5px solid var(--accent);
-            box-shadow: 0 0 0 10px rgba(148, 137, 121, 0.2);
-            flex-shrink: 0;
-        }
-
-        .story-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .story-body {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            align-items: center;
-            width: 100%;
-        }
-
-        .story-text {
-            text-align: justify;
-            padding: 0 1rem;
-        }
-        
-        .story-text p {
-            font-size: clamp(1rem, 1.8vw, 1.2rem);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-        
-        .story-quote {
-            padding: 2rem;
-            /* Menggunakan warna secondary baru */
-            background: var(--bg-secondary); 
-            /* Border menggunakan warna accent baru */
-            border-left: 5px solid var(--accent); 
-            border-radius: 8px;
-            margin-top: 2rem;
-            text-align: left;
-        }
-        
-        .story-quote p {
-            font-style: italic;
-            font-weight: 300;
-            font-size: clamp(1rem, 1.8vw, 1.2rem);
-            line-height: 1.6;
-            margin-bottom: 0;
-            color: var(--text-primary);
-        }
-
-        /* Process Section */
-        .process {
-            padding: 5rem 5%;
-            /* Menggunakan warna secondary baru */
-            background: var(--bg-secondary); 
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(148, 137, 121, 0.25); 
         }
 
         .section-title {
             text-align: center;
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 3rem;
+            font-size: 51px;
+            margin-bottom: 56px;
             font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        .process {
+            padding: 96px 40px;
+            background: var(--bg-primary); 
         }
 
         .process-cards {
             display: grid;
             grid-template-columns: repeat(2, 1fr); 
-            gap: 2rem;
-            max-width: 800px; 
+            gap: 32px;
+            max-width: 900px; 
             margin: 0 auto;
         }
 
         .process-card {
-            /* Menggunakan warna primary baru */
-            background: var(--bg-primary); 
-            padding: 2rem;
-            border-radius: 14px;
+            background: var(--bg-secondary); 
+            padding: 48px 32px;
+            border-radius: var(--shape-large); 
             text-align: center;
+            transition: var(--transition-standard);
+        }
+        
+        .process-card:hover {
+            background: #424852; 
+            transform: translateY(-4px);
         }
 
         .process-card i {
-            /* Menggunakan warna accent baru */
-            font-size: 3rem;
-            color: var(--accent); 
-            margin-bottom: 1rem;
+            font-size: 40px;
+            color: var(--bg-primary); 
+            background: var(--accent);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: var(--shape-pill);
+            margin-bottom: 24px;
+            display: inline-block;
         }
 
         .process-card h3 {
-            font-size: clamp(1.3rem, 2vw, 1.5rem);
-            margin-bottom: 1rem;
+            font-size: 26px;
+            margin-bottom: 16px;
+            font-weight: 600;
         }
 
         .process-card p {
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            font-size: 18px;
             color: var(--text-secondary);
         }
 
-        /* Gallery Section */
         .gallery {
-            padding: 5rem 5%;
+            padding: 96px 40px;
             background: var(--bg-primary);
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1400px; 
+            margin: 0 auto 48px;
         }
 
         .gallery-item {
             position: relative;
-            aspect-ratio: 4 / 5; 
-            border-radius: 14px;
+            height: 380px; 
+            border-radius: var(--shape-large); 
             overflow: hidden;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s ease;
+            transition: var(--transition-standard);
+            background: var(--bg-secondary);
         }
 
         .gallery-item:hover {
             transform: scale(1.02);
-            /* Box shadow menggunakan warna accent baru */
-            box-shadow: 0 10px 30px rgba(148, 137, 121, 0.3);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: var(--transition-standard);
         }
 
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .gallery-overlay {
             position: absolute;
-            bottom: -1px; 
+            bottom: 0; 
             left: 0;
             right: 0;
-            padding: 10px;
-            /* Gradient menggunakan warna primary baru */
-            background: linear-gradient(transparent, rgba(34, 40, 49, 0.796));
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
+            padding: 32px 24px 24px;
+            background: linear-gradient(transparent, rgba(34, 40, 49, 0.95));
+            transform: translateY(20px);
+            opacity: 0;
+            transition: var(--transition-standard);
         }
 
         .gallery-item:hover .gallery-overlay {
             transform: translateY(0);
+            opacity: 1;
         }
 
         .gallery-overlay h4 {
-            font-size: 13px; 
-            font-weight: 100; 
-            color: var(--text-primary);
-            margin-bottom: -4px;
-            color: rgb(255, 253, 240);
+            font-size: 18px; 
+            font-weight: 500; 
+            color: white;
+            margin-bottom: 0;
         }
 
         .view-all-btn {
             display: block;
             margin: 0 auto;
             background: transparent;
-            /* Border menggunakan warna accent baru */
             border: 2px solid var(--accent); 
-            color: var(--accent);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            color: var(--text-primary);
+            padding: 16px 48px;
+            border-radius: var(--shape-pill); 
+            font-size: 18px;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition-standard);
         }
 
-        .view-all-btn:hover {
-            background: var(--accent);
-            color: var(--bg-primary);
+        .certificates {
+            padding: 96px 40px;
+            background: var(--bg-primary); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .cert-container {
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            gap: 32px;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
         }
 
-        /* Before-After Section */
+        .cert-portrait {
+            width: 320px;
+            height: 426px;
+            margin: 0 auto;
+        }
+
+        .cert-landscape {
+            width: 480px;
+            height: 330px;
+            margin: 0 auto;
+        }
+
         .before-after {
-            padding: 5rem 5%;
-            /* Menggunakan warna secondary baru */
+            padding: 96px 40px;
             background: var(--bg-secondary); 
+            border-radius: var(--shape-large);
+            margin: 0 40px; 
         }
 
         .comparison-container {
             position: relative;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            aspect-ratio: 16 / 9; 
-            height: auto; 
-            border-radius: 14px;
+            max-width: 900px;
+            margin: 0 auto 32px;
+            height: 500px; 
+            border-radius: var(--shape-large);
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
         .comparison-img {
@@ -415,10 +439,9 @@
 
         .slider-line {
             position: absolute;
-            width: 3px;
+            width: 4px;
             height: 100%;
-            /* Menggunakan warna accent baru */
-            background: var(--accent); 
+            background: var(--text-primary); 
             left: 50%;
             top: 0;
             transform: translateX(-50%);
@@ -431,149 +454,108 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            /* Menggunakan warna accent baru */
+            width: 56px;
+            height: 56px;
             background: var(--accent); 
-            color: var(--bg-primary); /* Warna teks handle kontras dengan accent */
-            border-radius: 50%;
+            color: var(--bg-primary); 
+            border-radius: var(--shape-pill);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+        
+        .slider-line:active .slider-handle,
+        .slider-line:hover .slider-handle {
+            transform: translate(-50%, -50%) scale(1.1);
         }
 
         .comparison-labels {
             display: flex;
             justify-content: space-between;
-            max-width: 800px;
-            margin: 0 auto 1rem;
-            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-            font-weight: 500;
+            max-width: 900px;
+            margin: 0 auto 24px;
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
         .before-after-text {
             text-align: center;
             max-width: 700px;
-            margin: 2rem auto 0;
-            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            margin: 48px auto 0;
+            font-size: 21px;
             font-style: italic;
-        }
-
-        /* Journal Section */
-        .journal {
-            padding: 5rem 5%;
-            background: var(--bg-primary);
-        }
-
-        .journal-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 2rem;
-            max-width: 800px; 
-            margin: 0 auto;
-        }
-
-        .journal-card {
-            /* Menggunakan warna secondary baru */
-            background: var(--bg-secondary); 
-            border-radius: 14px;
-            overflow: hidden;
-        }
-
-        .journal-img {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            height: auto;
-            background: var(--bg-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .journal-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(80%); 
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-
-        .journal-content {
-            padding: 1.5rem;
-        }
-
-        .journal-content h3 {
-            font-size: clamp(1.1rem, 1.8vw, 1.3rem);
-            /* Menggunakan warna accent baru */
-            color: var(--accent); 
-            margin-bottom: 0.8rem;
-        }
-
-        .journal-content p {
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
             color: var(--text-secondary);
-            font-style: italic;
         }
 
-        /* Contact Section */
         .contact {
-            padding: 5rem 5%;
-            background: var(--bg-primary); /* Pastikan ini sesuai dengan warna primary */
+            padding: 96px 40px;
+            background: var(--bg-primary); 
         }
 
         .contact-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
-        }
-
-        .contact-subtitle {
-            font-size: clamp(1rem, 1.8vw, 1.2rem);
-            margin-bottom: 2rem;
-            color: var(--text-secondary);
+            background: transparent;
+            padding: 16px 32px; 
+            border-radius: var(--shape-large);
         }
 
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 0;
+            gap: 40px; 
+            flex-wrap: wrap; 
+        }
+
+        .social-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .social-item span {
+            font-size: 14px;
+            color: var(--text-primary);
+            font-weight: 500;
         }
 
         .social-icons a {
-            /* Menggunakan warna accent baru */
-            color: var(--accent); 
-            font-size: 2rem;
-            transition: all 0.3s ease;
+            background: var(--bg-primary);
+            color: var(--text-primary); 
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--shape-pill);
+            font-size: 29px;
+            transition: var(--transition-standard);
+            text-decoration: none; 
         }
 
         .social-icons a:hover {
-            color: var(--text-primary);
-            transform: translateY(-3px);
+            background: var(--accent);
+            color: var(--bg-primary);
+            transform: scale(1.1);
         }
 
-        /* Footer */
         .footer {
-            background: var(--bg-secondary); /* Menggunakan warna secondary baru */
-            /* Border menggunakan warna accent baru */
-            border-top: 1px solid rgba(148, 137, 121, 0.3); 
-            padding: 3rem 5%;
+            background: var(--bg-primary); 
+            padding: 48px 40px;
             text-align: center;
         }
 
         .footer p {
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
-            color: rgba(223, 208, 184, 0.7); /* Warna teks footer */
+            font-size: 16px;
+            color: var(--text-secondary);
         }
 
-        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -581,75 +563,61 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(34, 40, 49, 0.95);
             z-index: 2000;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
         }
 
         .lightbox.active {
             display: flex;
         }
 
+        .lightbox-images {
+            display: flex;
+            gap: 24px;
+            max-width: 95%;
+            max-height: 900px;
+            justify-content: center;
+            align-items: center;
+        }
+
         .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
+            max-width: 100%;
+            max-height: 900px;
+            border-radius: var(--shape-medium);
             object-fit: contain;
+        }
+        
+        .lightbox-images.dual img {
+            max-width: calc(50% - 12px);
         }
 
         .lightbox-close {
             position: absolute;
-            top: 2rem;
-            right: 2rem;
+            top: 32px;
+            right: 32px;
             color: var(--text-primary);
-            font-size: 2.5rem;
+            background: var(--bg-secondary);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--shape-pill);
+            font-size: 24px;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: var(--transition-standard);
         }
 
         .lightbox-close:hover {
-            color: var(--accent);
-        }
-
-        /* Responsive */
-        
-        @media (min-width: 768px) {
-            .story-content {
-                display: grid;
-                grid-template-areas: 
-                    "image text";
-                grid-template-columns: 250px 1fr;
-                gap: 3rem;
-                align-items: flex-start;
-                padding-top: 2rem;
-            }
-
-            .story-image {
-                grid-area: image;
-                margin-bottom: 0;
-            }
-
-            .story-text-wrapper {
-                 grid-area: text;
-                 padding-left: 1rem;
-            }
-            
-            .story-text {
-                padding: 0;
-            }
+            background: var(--accent);
+            color: var(--bg-primary);
         }
 
         @media (max-width: 992px) {
             .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .process-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .journal-cards {
                 grid-template-columns: repeat(2, 1fr);
             }
             
@@ -658,83 +626,94 @@
             }
 
             .nav-menu {
-                left: auto;
-                right: 0;
-                width: 30%; 
                 position: fixed;
-                top: 60px;
+                top: 80px;
+                right: 40px;
+                width: 250px; 
                 flex-direction: column;
-                /* Menggunakan warna primary baru untuk menu mobile */
-                background: rgba(34, 40, 49, 0.98); 
-                display: none;
-                padding: 1.5rem 2rem;
-                gap: 0.5rem;
-                box-shadow: none; 
-            }
-            
-            .navbar {
+                background: var(--bg-secondary); 
+                border-radius: var(--shape-large);
                 display: flex;
-                justify-content: space-between;
-                align-items: center;
+                padding: 16px;
+                gap: 8px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-20px);
+                transition: var(--transition-standard);
             }
 
             .nav-menu.active {
-                display: flex; 
-                box-shadow: none; 
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
             }
             
             .nav-menu li {
                 width: 100%;
-                text-align: right;
             }
             
             .nav-menu a {
                 display: block;
-                padding: 0.4rem 0;
-            }
-
-            .story-content {
-                grid-template-columns: 1fr;
-            }
-
-            .comparison-container {
-                aspect-ratio: 16 / 9; 
-                height: auto; 
-            }
-        }
-
-        @media (max-width: 480px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .process-cards {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+                padding: 16px;
+                text-align: center;
             }
             
-            .journal-cards {
+            .before-after {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .lightbox-images.dual {
+                flex-direction: column;
+            }
+            
+            .lightbox-images.dual img {
+                max-width: 100%;
+                max-height: 400px; 
+            }
+            
+            .hero h1 { font-size: 56px; }
+            .section-title { font-size: 40px; }
+            .cert-container { 
+                flex-direction: column; 
+                align-items: center;
+                justify-content: center;
+            }
+            .cert-portrait, .cert-landscape { 
+                width: 100%; 
+                height: auto; 
+                max-width: 400px; 
+                aspect-ratio: unset;
+                margin: 0 auto; 
+            }
+            .comparison-container { height: 400px; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid, .process-cards {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 24px;
             }
-
-            .story-image {
-                width: 200px;
-                height: 200px;
+            
+            .contact-content {
+                padding: 48px 24px;
             }
-
-            .nav-menu {
-                width: 60%; 
-            }
+            
+            .hero h1 { font-size: 40px; margin-bottom: 16px; }
+            .hero p { font-size: 16px; margin-bottom: 32px; }
+            .hero-profile h2 { font-size: 25px; }
+            .section-title { font-size: 32px; margin-bottom: 32px; }
+            .process, .gallery, .certificates, .before-after, .contact { padding: 64px 24px; }
+            .comparison-container { height: 300px; }
         }
     </style>
 </head>
 <body>
     
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
-            <span>MICHELLINO</span>
+            <span style="font-weight: bold; font-size: 24px;">AboutMe</span><a href="https://linnopixel.github.io/2/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
         </div>
         <div class="hamburger">
             <span></span>
@@ -743,39 +722,28 @@
         </div>
         <ul class="nav-menu">
             <li><a href="#home">Home</a></li>
-            <li><a href="#story">Story</a></li>
             <li><a href="#process">Process</a></li>
             <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#sertifikat">Sertifikat</a></li>
             <li><a href="#before-after">B & A</a></li>
-            <li><a href="#journal">Journal</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-profile">
+            <img src="pp/pp.jpg" alt="Foto Profil" onerror="this.onerror=null; this.src='https://placehold.co/400x400/393E46/DFD0B8?text=Admin';">
+            <h2>MICHELLINO DAYAQQOVA</h2>
+            <div class="hero-badges">
+                <span class="hero-badge"><i class="fa-solid fa-school"></i> Lulusan SMK PGRI Wlingi</span>
+                <span class="hero-badge"><i class="fa-solid fa-building-columns"></i> Universitas Dian Nuswantoro Kediri</span>
+                <span class="hero-badge"><i class="fa-solid fa-laptop-code"></i> S1 Teknik Informatika</span>
+                <span class="hero-badge"><i class="fa-solid fa-book"></i> Semester 1</span>
+            </div>
+        </div>
         <h1>Urge to Learn Everything</h1>
         <p>Penasaran terhadap dunia luar menjadi inspirasi.</p>
         <button class="cta-button" onclick="document.getElementById('gallery').scrollIntoView({behavior: 'smooth'})">Lihat Galeri</button>
-    </section>
-
-    <!-- Story Section -->
-    <section class="story" id="story">
-        <h2 class="story-header">Sedikit Cerita</h2>
-        <div class="story-content">
-            <div class="story-image">
-                <img src="pp/pp.jpeg" alt="wujud asli admin">
-            </div>
-            
-            <div class="story-text-wrapper">
-                <div class="story-text">
-                    <p>Iseng browsing Google Maps, jadi sering ngedit screenshoot dari banyak tempat entah itu rumah, tempat nongkrong, atau sekolah buat konten foto.</p>
-                </div>
-                <div class="story-quote">
-                    <p>Proses kreatif adalah tentang pencarian yang tak kenal lelah, pertemuan yang tak terduga, dan pengeditan yang memberi makna.</p>
-                </div>
-            </div>
-        </div>
     </section>
 
     <section class="process" id="process">
@@ -794,120 +762,146 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section class="gallery" id="gallery">
         <h2 class="section-title">Koleksi Foto</h2>
         <div class="gallery-grid">
-            <!-- Placeholder images diperbarui agar lebih konsisten -->
             <div class="gallery-item" onclick="openLightbox(this, 'koleksi/taman-maluku.jpeg')">
-                <img src="koleksi/taman-maluku.jpeg" alt="Taman Maluku" onerror="this.onerror=null; this.src='https://placehold.co/400x500/222831/DFD0B8?text=Gang+Sepi';" loading="lazy">
+                <img src="koleksi/taman-maluku.jpeg" alt="Taman Maluku" onerror="this.onerror=null; this.src='https://placehold.co/400x500/222831/DFD0B8?text=Taman+Maluku';" loading="lazy">
                 <div class="gallery-overlay">
                     <h4>Taman Maluku</h4>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox(this, 'koleksi/jalan.jpeg')">
-                <img src="koleksi/jalan.jpeg" alt="Persimpangan Kota yang Ramai" onerror="this.onerror=null; this.src='https://placehold.co/400x500/222831/DFD0B8?text=Persimpangan+Kota';" loading="lazy">
-                <div class="gallery-overlay">
-                    <h4>Jl. Ahmad Yani, Jember</h4>
-                </div>
-            </div>
             <div class="gallery-item" onclick="openLightbox(this, 'koleksi/upacara.avif')">
-                <img src="koleksi/upacara.avif" alt="Upacara Sekolah" onerror="this.onerror=null; this.src='koleksi/upacara.avif';" loading="lazy">
+                <img src="koleksi/upacara.avif" alt="Upacara Sekolah" onerror="this.onerror=null; this.src='https://placehold.co/400x500/393E46/DFD0B8?text=Upacara';" loading="lazy">
                 <div class="gallery-overlay">
                     <h4>Upacara Sekolah</h4>
                 </div>
             </div>
-            <div class="gallery-item" onclick="openLightbox(this, 'koleksi/asrama.jpeg')">
-                <img src="koleksi/asrama.jpeg" alt="Hamparan Sawah Hijau" onerror="this.onerror=null; this.src='koleksi/asrama.jpeg';" loading="lazy">
-                <div class="gallery-overlay">
-                    <h4>Asrama Jember</h4>
-                </div>
-            </div>
-            <div class="gallery-item" onclick="openLightbox(this, 'https://static01.nyt.com/images/2020/09/12/world/12china-schools-1/12china-schools-1-mediumSquareAt3X.jpg')">
-                <img src="https://static01.nyt.com/images/2020/09/12/world/12china-schools-1/12china-schools-1-mediumSquareAt3X.jpg" alt="Chinese Students" onerror="this.onerror=null; this.src='https://static01.nyt.com/images/2020/09/12/world/12china-schools-1/12china-schools-1-mediumSquareAt3X.jpg';" loading="lazy">
-                <div class="gallery-overlay">
-                    <h4>Chinese School</h4>
-                </div>
-            </div>
             <div class="gallery-item" onclick="openLightbox(this, 'koleksi/jl-wr-s.jpeg')">
-                <img src="koleksi/jl-wr-s.jpeg" alt="Malam di Pusat Kota" onerror="this.onerror=null; this.src='koleksi/jl-wr-s.jpeg';" loading="lazy">
+                <img src="koleksi/jl-wr-s.jpeg" alt="Malam di Pusat Kota" onerror="this.onerror=null; this.src='https://placehold.co/400x500/393E46/DFD0B8?text=Malam';" loading="lazy">
                 <div class="gallery-overlay">
                     <h4>Jl. WR Supratman, Jember</h4>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this, 'koleksi/gwk.jpg')">
+                <img src="koleksi/gwk.jpg" alt="Patung Garuda Wisnu Kencana" loading="lazy">
+                <div class="gallery-overlay">
+                    <h4>Patung Garuda Wisnu Kencana</h4>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this, 'koleksi/bedugul.jpg')">
+                <img src="koleksi/bedugul.jpg" alt="Bedugul-Bali" loading="lazy">
+                <div class="gallery-overlay">
+                    <h4>Bedugul-Bali</h4>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this, 'koleksi/penyebrangan.jpg')">
+                <img src="koleksi/penyebrangan.jpg" alt="Kapal" loading="lazy">
+                <div class="gallery-overlay">
+                    <h4>Menyebrang ke Bali</h4>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this, 'koleksi/bandara-juanda.jpg')">
+                <img src="koleksi/bandara-juanda.jpg" alt="Bandara" loading="lazy">
+                <div class="gallery-overlay">
+                    <h4>Bandara Juanda Surabaya</h4>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this, 'koleksi/bali-dua.jpg')">
+                <img src="koleksi/bali-dua.jpg" alt="Makan" loading="lazy">
+                <div class="gallery-overlay">
+                    <h4>Balidua Kopi</h4>
                 </div>
             </div>
         </div>
         <button class="view-all-btn">Lihat Semua Koleksi</button>
     </section>
 
-    <!-- Before-After Section -->
+    <section class="certificates" id="sertifikat">
+        <h2 class="section-title">Sertifikat</h2>
+        <div class="cert-container">
+            <div class="gallery-item cert-portrait" onclick="openLightbox(this, 'sertif/Snapseed/4117.jpeg', 'sertif/Snapseed/4118.jpeg')">
+                <img src="sertif/Snapseed/4117.jpeg" alt="Sertifikat LSP 1" onerror="this.onerror=null; this.src='https://placehold.co/600x800/222831/DFD0B8?text=LSP+1+Depan';" loading="lazy">
+                <div class="gallery-overlay">
+                    <h4>Data Center Technical Support</h4>
+                </div>
+            </div>
+            
+            <div class="gallery-item cert-landscape" onclick="openLightbox(this, 'sertif/pkl1.png', 'sertif/pkl2.png')">
+                <img src="sertif/pkl1.png" alt="Sertifikat PKL" onerror="this.onerror=null; this.src='https://placehold.co/800x550/222831/DFD0B8?text=PKL+Depan';" loading="lazy">
+                <div class="gallery-overlay">
+                    <h4>Sertifikat PKL</h4>
+                </div>
+            </div>
+            
+            <div class="gallery-item cert-portrait" onclick="openLightbox(this, 'sertif/Snapseed/4119.jpeg', 'sertif/Snapseed/4120.jpeg')">
+                <img src="sertif/Snapseed/4119.jpeg" alt="Sertifikat LSP 2" onerror="this.onerror=null; this.src='https://placehold.co/600x800/222831/DFD0B8?text=LSP+2+Depan';" loading="lazy">
+                <div class="gallery-overlay">
+                    <h4>Junior Technical Support</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="before-after" id="before-after">
         <h2 class="section-title">Before & After</h2>
-        <!-- Ganti warna teks p menjadi warna accent baru -->
-        <p style="text-align: center; margin-top: -40px; color: var(--accent);">*geser garisnya*</p> 
+        <p style="text-align: center; margin-top: -40px; margin-bottom: 24px; color: var(--text-secondary); font-size: 14px;">Geser garis pemisah</p> 
         <div class="comparison-labels">
             <span>Before</span>
             <span>After</span>
         </div>
         <div class="comparison-container">
-            <!-- Ganti dengan URL gambar Anda yang sebenarnya -->
-            <img class="comparison-img" src="b.jpeg" alt="Citra Mentah Sebelum Edit">
-            <img class="comparison-img after-img" src="a.jpeg" alt="Karya Setelah Edit">
+            <img class="comparison-img" src="b.jpeg" alt="Citra Mentah Sebelum Edit" onerror="this.onerror=null; this.src='https://placehold.co/900x500/393E46/DFD0B8?text=Before';">
+            <img class="comparison-img after-img" src="a.jpeg" alt="Karya Setelah Edit" onerror="this.onerror=null; this.src='https://placehold.co/900x500/948979/222831?text=After';">
             <div class="slider-line" id="sliderLine">
                 <div class="slider-handle">
-                    <i class="fa-solid fa-circle"></i>
+                    <i class="fa-solid fa-arrows-left-right"></i>
                 </div>
             </div>
         </div>
-        <p class="before-after-text">"Setiap sentuhan mengubah suasana — bukan hanya warna, tapi juga cerita."</p>
+        <p class="before-after-text">"Setiap sentuhan mengubah suasana"</p>
     </section>
 
-    <!-- Journal Section -->
-    <section class="journal" id="journal">
-        <h2 class="section-title">Makna dari Perjalanan</h2>
-        <div class="journal-cards">
-            <div class="journal-card">
-                <div class="journal-img">
-                    <img src="jurnal/gunung.jpg" alt="Gunung dan Jalan">
-                </div>
-                <div class="journal-content">
-                    <h3>Perspektif Baru</h3>
-                    <p>"Kadang keindahan datang dari tempat yang tak pernah kita niatkan untuk dilihat."</p>
-                </div>
-            </div>
-            <div class="journal-card">
-                <div class="journal-img">
-                    <img src="jurnal/satelit.png" alt="Peta Satelit">
-                </div>
-                <div class="journal-content">
-                    <h3>Tersesat & Menemukan</h3>
-                    <p>"Dalam mencari, kita sering menemukan hal yang lebih berharga dari yang kita cari."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
     <section class="contact" id="contact">
-        <h2 class="section-title">Kontak.</h2>
+        <h2 class="section-title" style="margin-bottom: 24px;">Kontak.</h2>
         <div class="contact-content">
-            <div class="contact-subtitle">Kalau ada pertanyaan, mau kasih saran, atau sekadar nyapa, hubungi lewat media sosial di bawah ini.</div>
             <div class="social-icons">
-                <a href="https://www.instagram.com/mar.nnow" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://github.com/linnopixel" aria-label="Github"><i class="fa-brands fa-github"></i></a>
-                <a href="https://discord.com/invite/v2M536ZkW3" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                <div class="social-item">
+                    <a href="https://www.instagram.com/darkov.0" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <span>@darkov.0</span>
+                </div>
+                <div class="social-item">
+                    <a href="https://github.com/naskus" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <span>naskus</span>
+                </div>
+                <div class="social-item">
+                    <a href="https://discord.com/invite/v2M536ZkW3" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <span>Ti Yang</span>
+                </div>
+                <div class="social-item">
+                    <a href="https://wa.me/6281333866874" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <span>WhatsApp</span>
+                </div>
+                <div class="social-item">
+                    <a href="mailto:michellino241@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <span>Email</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
-        <p>© 2025 Michellino. All Rights Reserved</p>
+        <p>© 2026 Michellino. All Rights Reserved</p>
     </footer>
 
-    <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">
-        <i class="fa-solid fa-xmark lightbox-close" onclick="closeLightbox()"></i>
-        <img id="lightboxImg" src="" alt="Gambar Galeri Besar">
+        <div class="lightbox-close" onclick="closeLightbox()">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="lightbox-images" id="lightboxImages">
+            <img id="lightboxImg1" src="" alt="Gambar 1">
+            <img id="lightboxImg2" src="" alt="Gambar 2" style="display: none;">
+        </div>
     </div>
 
     <script>
@@ -924,7 +918,6 @@
             });
         });
 
-        // Before-After Slider
         const sliderLine = document.getElementById('sliderLine');
         const comparisonContainer = document.querySelector('.comparison-container');
         const afterImg = document.querySelector('.after-img');
@@ -951,7 +944,6 @@
             afterImg.style.clipPath = `polygon(${percentage}% 0, 100% 0, 100% 100%, ${percentage}% 100%)`;
         }
 
-        // Mouse events
         sliderLine.addEventListener('mousedown', (e) => {
             isDragging = true;
             e.preventDefault();
@@ -959,7 +951,6 @@
         document.addEventListener('mouseup', () => isDragging = false);
         document.addEventListener('mousemove', updateSlider);
 
-        // Touch events
         sliderLine.addEventListener('touchstart', (e) => {
             isDragging = true;
             e.preventDefault();
@@ -975,12 +966,24 @@
 
         comparisonContainer.addEventListener('click', updateSlider);
 
-        // Lightbox functions
-        function openLightbox(element, imgUrl) {
+        function openLightbox(element, imgUrl, imgUrl2 = null) {
             const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightboxImg');
+            const img1 = document.getElementById('lightboxImg1');
+            const img2 = document.getElementById('lightboxImg2');
+            const container = document.getElementById('lightboxImages');
             
-            lightboxImg.src = imgUrl;
+            img1.src = imgUrl;
+            
+            if (imgUrl2) {
+                img2.src = imgUrl2;
+                img2.style.display = 'block';
+                container.classList.add('dual');
+            } else {
+                img2.src = '';
+                img2.style.display = 'none';
+                container.classList.remove('dual');
+            }
+            
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -989,7 +992,13 @@
             const lightbox = document.getElementById('lightbox');
             lightbox.classList.remove('active');
             document.body.style.overflow = 'auto';
-            document.getElementById('lightboxImg').src = "";
+            document.getElementById('lightboxImg1').src = "";
+            const img2 = document.getElementById('lightboxImg2');
+            if(img2) {
+                img2.src = "";
+                img2.style.display = 'none';
+            }
+            document.getElementById('lightboxImages').classList.remove('dual');
         }
 
         document.addEventListener('keydown', (e) => {
@@ -999,7 +1008,7 @@
         });
 
         document.getElementById('lightbox').addEventListener('click', (e) => {
-            if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
+            if (e.target.id === 'lightbox' || e.target.id === 'lightboxImages') {
                 closeLightbox();
             }
         });
@@ -1024,4 +1033,3 @@
     </script>
 </body>
 </html>
-
